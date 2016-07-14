@@ -42,7 +42,7 @@ def save_image():
 
         filename = secure_filename(file.filename)
 
-        if file and helper.allowed_file(filename):
+        if file and allowed_file(filename):
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             return redirect(url_for('success',
