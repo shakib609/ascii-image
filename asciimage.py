@@ -44,6 +44,8 @@ def save_image():
 
         if file and allowed_file(filename):
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            if not os.path.exists(app.config['UPLOAD_FOLDER']):
+                os.mkdir(app.config['UPLOAD_FOLDER'])
             file.save(filepath)
             return redirect(url_for('success',
                                     filename=filename))
@@ -56,8 +58,6 @@ def save_image():
 
 @app.route('/asciimage/<filename>')
 def success(filename):
-    if not os.path.exists(app.config['UPLOAD_FOLDER']):
-        os.mkdir(app.config['UPLOAD_FOLDER'])
 
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     asciimage_str = asciimage(filepath, maxLen=150)
