@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>ASCIIMAGE!</h1>
-    <a href="{{ url_for('upload') }}">Upload your image now!</a>
+    <div class="jumbotron text-center">
+        <h1>ASCIIMAGE!</h1>
+        <a href="{{ url_for('upload') }}" class="btn btn-primary">
+            Upload your image now!
+        </a>
+    </div>
 {% endblock %}

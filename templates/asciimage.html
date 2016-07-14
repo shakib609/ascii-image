@@ -19,7 +19,15 @@
 {% endblock %}
 
 {% block content %}
-    <h1>ASCIIMAGE</h1>
-    <h4><a href="{{ url_for('upload') }}">Upload another one!</a></h4>
-    <pre>{{ asciimage_str }}</pre>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="page-header">
+                <h1>ASCIIMAGE</h1>
+                <a href="{{ url_for('upload') }}" class="btn btn-primary">
+                    Upload another one!
+                </a>
+            </div>
+            <pre>{{ asciimage_str }}</pre>
+        </div>
+    </div>
 {% endblock%}

@@ -5,9 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    <form method="POST" action="{{ url_for('save_image') }}"
-          enctype="multipart/form-data">
-        <input type="file" name="photo">
-        <input type="submit" value="Submit!">
-    </form>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="page-header">
+                <h1>Upload Image</h1>
+            </div>
+            <form method="POST" action="{{ url_for('save_image') }}"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="photo">Image</label>
+                    <input type="file" name="photo">
+                    <p class="help-block">
+                        Only .jpg and .jpeg images are allowed now.
+                    </p>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
