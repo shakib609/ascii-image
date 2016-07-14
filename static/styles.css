@@ -1,0 +1,33 @@
+#ascii {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    line-height: 0.9;
+    font-size: 7px;
+}
+
+@media (max-width: 320px) {
+    #ascii {
+        font-size: 2px;
+    }
+}
+
+@media (max-width: 375px) and (min-width: 321px) {
+    #ascii {
+        font-size: 3px;
+    }
+}
+
+@media (max-width: 425px) and (min-width: 376px) {
+    #ascii {
+        font-size: 4px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 426px) {
+    #ascii {
+        font-size: 5px;
+    }
+}

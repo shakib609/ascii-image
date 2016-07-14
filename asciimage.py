@@ -61,7 +61,7 @@ def save_image():
 def success(filename):
 
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    asciimage_str = asciimage(filepath, maxLen=150)
+    asciimage_str = asciimage(filepath, maxLen=140)
     os.remove(filepath)
     return render_template('asciimage.html', asciimage_str=asciimage_str)
 

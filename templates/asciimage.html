@@ -3,21 +3,6 @@
     {{ super() }} | SUCCESS
 {% endblock %}
 
-{% block head %}
-<style type="text/css" media="all">
-    pre {
-        white-space: pre-wrap;       /* css-3 */
-        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-        white-space: -pre-wrap;      /* Opera 4-6 */
-        white-space: -o-pre-wrap;    /* Opera 7 */
-        word-wrap: break-word;       /* Internet Explorer 5.5+ */
-        font-family: monospace;
-        line-height: 1.0;
-        font-size: 7px;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
     <div class="row">
         <div class="col-md-8 col-md-offset-2 text-center">
@@ -27,7 +12,7 @@
                     Upload another one!
                 </a>
             </div>
-            <pre>{{ asciimage_str }}</pre>
+            <pre id="ascii">{{ asciimage_str }}</pre>
         </div>
     </div>
 {% endblock%}
