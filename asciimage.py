@@ -6,7 +6,6 @@ from flask_script import Manager
 from werkzeug.utils import secure_filename
 
 from lib import asciimage
-import helper
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg'])
 UPLOAD_FOLDER = os.path.join(os.path.abspath('.'), 'uploads')
@@ -15,6 +14,11 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 manager = Manager(app)
+
+
+def allowed_file(filename):
+    return '.' in filename and\
+                filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
 @app.route('/')
