@@ -12,6 +12,7 @@ UPLOAD_FOLDER = os.path.join(os.path.abspath('.'), 'uploads')
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = os.environ.get('SECRET_KEY') or 'YOud asdfjln2304u,./f'
 
 manager = Manager(app)
 
@@ -38,7 +39,7 @@ def save_image():
 
         if not file.filename:
             flash('No files selected!')
-            return redirect(request.url)
+            return redirect(url_for('upload'))
 
         filename = secure_filename(file.filename)
 
@@ -51,9 +52,9 @@ def save_image():
                                     filename=filename))
         else:
             flash('Format not Allowed. jpg only!')
-        return redirect(request.url)
+        return redirect(url_for('upload'))
     flash('Select a file please!')
-    return redirect(request.url)
+    return redirect(url_for('upload'))
 
 
 @app.route('/asciimage/<filename>')
