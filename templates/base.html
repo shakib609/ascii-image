@@ -7,11 +7,16 @@
             ASCIIMAGE
         {% endblock %}
         </title>
+        <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/styles.css">
         {% block head %}
         {% endblock %}
     </head>
     <body>
-        {% block content %}
-        {% endblock %}
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
     </body>
 </html>
