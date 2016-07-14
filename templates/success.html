@@ -11,7 +11,7 @@
         white-space: -pre-wrap;      /* Opera 4-6 */
         white-space: -o-pre-wrap;    /* Opera 7 */
         word-wrap: break-word;       /* Internet Explorer 5.5+ */
-        font-family: 'Menlo', 'Courier New', 'Consola';
+        font-family: monospace;
         line-height: 1.0;
         font-size: 7px;
     }
@@ -19,5 +19,7 @@
 {% endblock %}
 
 {% block content %}
+    <h1>ASCIIMAGE</h1>
+    <h4><a href="{{ url_for('upload') }}">Upload another one!</a></h4>
     <pre>{{ asciimage_str }}</pre>
 {% endblock%}
