@@ -57,7 +57,7 @@ def save_image():
     return redirect(url_for('upload'))
 
 
-@app.route('/asciimage/<filename>')
+@app.route('/ascii-image/<filename>')
 def success(filename):
 
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -67,7 +67,7 @@ We delete your image after processing.''')
         return redirect(url_for('upload'))
     asciimage_str = asciimage(filepath, maxLen=140)
     os.remove(filepath)
-    return render_template('asciimage.html', asciimage_str=asciimage_str)
+    return render_template('ascii-image.html', asciimage_str=asciimage_str)
 
 if __name__ == '__main__':
     manager.run()
