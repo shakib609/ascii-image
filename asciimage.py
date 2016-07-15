@@ -13,6 +13,7 @@ UPLOAD_FOLDER = os.path.join(os.path.abspath('.'), 'uploads')
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = os.environ.get('SECRET_KEY') or 'YOud asdfjln2304u,./f'
+app.config['MAX_CONTENT_LENGTH'] = 4 * 1024 * 1024
 
 manager = Manager(app)
 
@@ -27,12 +28,12 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/form')
+@app.route('/form', methods=['GET'])
 def upload():
     return render_template('upload.html')
 
 
-@app.route('/up', methods=['POST'])
+@app.route('/form', methods=['POST'])
 def save_image():
     if 'photo' in request.files:
         file = request.files['photo']
@@ -68,6 +69,12 @@ We delete your image after processing.''')
     asciimage_str = asciimage(filepath, maxLen=140)
     os.remove(filepath)
     return render_template('ascii-image.html', asciimage_str=asciimage_str)
+
+
+@app.errorhandler(413)
+def file_too_large(err):
+    flash('File Size limit 4.0 Mb! Upload another file.')
+    return render_template('upload.html'), 413
 
 if __name__ == '__main__':
     manager.run()
