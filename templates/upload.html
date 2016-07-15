@@ -10,6 +10,18 @@
             <div class="page-header">
                 <h1>Upload Image</h1>
             </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages%}
+                <div class="alert alert-warning" role="alert">
+                    <p>
+                        <span class="glyphicon glyphicon-warning-sign"
+                        aria-hidden="true"></span> {{ message }}
+                    </p>
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
             <form method="POST" action="{{ url_for('save_image') }}"
                   enctype="multipart/form-data">
                 <div class="form-group">
