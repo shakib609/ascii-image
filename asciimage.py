@@ -6,8 +6,9 @@ from flask_script import Manager
 from werkzeug.utils import secure_filename
 
 from lib import asciimage
+from lib import gif2txt
 
-ALLOWED_EXTENSIONS = set(['jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = os.path.join(os.path.abspath('.'), 'uploads')
 
 app = Flask(__name__)
@@ -20,7 +21,7 @@ manager = Manager(app)
 
 def allowed_file(filename):
     return '.' in filename and\
-                filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+                filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/')
@@ -66,9 +67,16 @@ def success(filename):
         flash('''You have to reupload the image.
 We delete your image after processing.''')
         return redirect(url_for('upload'))
-    asciimage_str = asciimage(filepath, maxLen=140)
+    if filename[-3:].lower() == 'gif':
+        asciimage_str = None
+        asciimage_strings = gif2txt(filepath, maxLen=90)
+    else:
+        asciimage_str = asciimage(filepath, maxLen=140)
+        asciimage_strings = None
     os.remove(filepath)
-    return render_template('ascii-image.html', asciimage_str=asciimage_str)
+    return render_template('ascii-image.html',
+                           asciimage_str=asciimage_str,
+                           asciimage_strings=asciimage_strings)
 
 
 @app.errorhandler(413)

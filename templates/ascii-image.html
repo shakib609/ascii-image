@@ -12,7 +12,26 @@
                     Upload another one!
                 </a>
             </div>
-            <pre id="ascii">{{ asciimage_str }}</pre>
+            {% if asciimage_str %}
+            <pre class="ascii">{{ asciimage_str }}</pre>
+            {% elif asciimage_strings %}
+                {% for string in asciimage_strings %}
+                    <pre id="{{ loop.index }}" class="ascii"
+                        {% if loop.index > 0 %}
+                        style="display: none"
+                        {% endif %}>{{ string }}</pre>
+              {% endfor %}
+              <script>
+                var id = 1;
+                setInterval(function() {
+                  document.getElementById(id.toString()).style.display = 'none';
+                  id = id + 1;
+                  if (id > {{ asciimage_strings | length }}) id = 1;
+                  console.log(id)
+                  document.getElementById(id.toString()).style.display = 'block';
+                }, 90);
+              </script>
+            {% endif %}
         </div>
     </div>
 {% endblock%}
