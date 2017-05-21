@@ -13,14 +13,23 @@
         <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="/static/styles.css">
-
+        {% block extra_css %}
+        {% endblock %}        
+        <style>
+            body {
+                background-color: #333;
+                color: #fff;
+            }
+        </style>
         {% block head %}
         {% endblock %}
     </head>
     <body>
+        {% block body %}
         <div class="container-fluid">
             {% block content %}
             {% endblock %}
         </div>
+        {% endblock %}
     </body>
 </html>

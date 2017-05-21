@@ -1,10 +1,43 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <div class="jumbotron text-center">
-        <h1>ASCII-Image!</h1>
-        <a href="{{ url_for('upload') }}" class="btn btn-primary">
-            Upload your image now!
-        </a>
+{% block extra_css %}
+    <link rel="stylesheet" href="/static/cover.css">
+{% endblock %}
+
+{% block body %}
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Ascii-Image</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Upload</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover">
+            <h1 class="cover-heading">ASCII-Image</h1>
+            <p class="lead">Turn your image into ASCII characters. Upload your Image now!</p>
+            <p class="lead">
+              <a href="{{ url_for('upload') }}" class="btn btn-lg btn-default">Upload</a>
+            </p>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>&copy; <a href="https://github.com/shakib609">Shakib Hossain</a>, 2017.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
 {% endblock %}
